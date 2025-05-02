@@ -2,12 +2,6 @@
 #include <random>
 #include <utility>
 
-// I came up with this algorithm while trying to find socks in a laundry basket.
-// My sock finding method is to pick two socks and search through the laundry for a match.
-// The rest came from metaphors in my head that I don't remember now.
-// I haven't touched sorting algorithms in years but this seemed like a fun
-// challenge. I'm sure its not even remotely optimal or even original but it works and it's mine :)
-// Stavros P.
 void sock_sort(std::vector<int>& laundry) {
     std::vector<std::pair<int, int>> stack;
     stack.push_back({0, (int)laundry.size() - 1});
@@ -39,7 +33,7 @@ void sock_sort(std::vector<int>& laundry) {
         int right = hi - 1;
         int pos = lo + 1;
 
-        // split into left right and middle
+        // split into regions, left right and middle
         while (pos <= right) {
             if (laundry[pos] < L) {
                 std::swap(laundry[left++], laundry[pos++]);
@@ -53,7 +47,7 @@ void sock_sort(std::vector<int>& laundry) {
         left--;
         right++;
 
-        // put pivots in correct positions
+        // put socks a/b in correct positions
         std::swap(laundry[lo], laundry[left]);
         std::swap(laundry[hi], laundry[right]);
 
